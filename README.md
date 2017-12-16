@@ -1,3 +1,3 @@
 # gluttonous
 game of gluttonous python（allowed reciting）
-requires: cocos2d, pyglet, 
+requirements: cocos2d, pyglet
