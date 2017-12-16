@@ -14,6 +14,7 @@ class Hello(cocos.layer.Layer):
         pyglet.resource.path = ['../img']
         pyglet.resource.reindex()
         super(Hello, self).__init__()
+        self.add(back())
         self.main = Mainmenu()
         self.add(self.main)
         self.i=0
@@ -35,6 +36,13 @@ class Hello(cocos.layer.Layer):
             if self.i is 2:
                 self.main.visible=True
                 self.i=0
+
+class back(cocos.sprite.Sprite):
+    def __init__(self):
+        super(back, self).__init__('scene.png')
+        self.scale_x = director.get_window_size()[0]/self.width
+        self.scale_y = director.get_window_size()[1]/self.height
+        self.position = (director.get_window_size()[0]/2, director.get_window_size()[1]/2)
 
 cocos.director.director.init(caption="Gluttonous Python")
 cocos.director.director.run(cocos.scene.Scene(Hello()))
