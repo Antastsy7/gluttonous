@@ -32,11 +32,11 @@ class HelloWorld2(cocos.layer.Layer):
                 cin=csv.reader(fin)
                 self.wordlist=[row for row in cin]
         if i is 2:
-            with open(path + 'Wordlists/CET-6.csv','r',encoding='utf8') as fin:
+            with open(path + '/Wordlists/CET-6.csv','r',encoding='utf8') as fin:
                 cin=csv.reader(fin)
                 self.wordlist=[row for row in cin]
         if i is 3:
-            with open(path + 'Wordlists/CET-4.csv','r',encoding='utf8') as fin:
+            with open(path + '/Wordlists/CET-4.csv','r',encoding='utf8') as fin:
                 cin=csv.reader(fin)
                 self.wordlist=[row for row in cin]
         self.num=len(self.wordlist)-1
