@@ -26,15 +26,15 @@ class HelloWorld2(cocos.layer.Layer):
         self.add(self.score,99999)
         # 打开数据库文件
         if i is 1:
-            with open('CET-4.csv','r') as fin:
+            with open('CET-4.csv','r',encoding='utf8') as fin:
                 cin=csv.reader(fin)
                 self.wordlist=[row for row in cin]
         if i is 2:
-            with open('CET-6.csv','r') as fin:
+            with open('CET-6.csv','r',encoding='utf8') as fin:
                 cin=csv.reader(fin)
                 self.wordlist=[row for row in cin]
         if i is 3:
-            with open('CEM-8.csv','r') as fin:
+            with open('CEM-8.csv','r',encoding='utf8') as fin:
                 cin=csv.reader(fin)
                 self.wordlist=[row for row in cin]
         self.num=len(self.wordlist)-1

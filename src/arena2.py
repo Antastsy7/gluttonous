@@ -18,7 +18,7 @@ class Arena2(cocos.layer.ColorLayer):
         self.snake = Snake2()
         self.add(self.snake, 10000)
         self.snake.init_body()
-
+        self.x0, self.y0 = self.center
         self.enemies = []
 
         self.keys_pressed = set()
@@ -45,3 +45,13 @@ class Arena2(cocos.layer.ColorLayer):
     def on_key_release (self, key, modifiers):
         self.keys_pressed.remove(key)
         self.snake.update_angle(self.keys_pressed)
+
+    def on_mouse_motion(self, x, y, buttons, modifiers):
+        x = 1 if x - self.x0 > 0 else -1 if x-self.x0 < 0 else 0
+        y = 1 if y - self.y0 > 0 else -1 if y-self.y0 < 0 else 0
+        directs = ((225, 180, 135), (270, None, 90), (315, 0, 45))
+        direct = directs[x + 1][y + 1]
+        if direct is None:
+            self.snake.angle_dest = self.snake.angle
+        else:
+            self.snake.angle_dest = direct
