@@ -6,6 +6,7 @@ from gameover2 import Gameover2
 from dot2 import Dot2
 import csv
 import random
+import os
 
 class HelloWorld2(cocos.layer.Layer):
 
@@ -25,16 +26,17 @@ class HelloWorld2(cocos.layer.Layer):
         self.score.position= 40,440
         self.add(self.score,99999)
         # 打开数据库文件
+        path = os.getcwd()[0:-4]
         if i is 1:
-            with open('CET-4.csv','r',encoding='utf8') as fin:
+            with open(path + '/Wordlists/CEM-8.csv','r',encoding='utf8') as fin:
                 cin=csv.reader(fin)
                 self.wordlist=[row for row in cin]
         if i is 2:
-            with open('CET-6.csv','r',encoding='utf8') as fin:
+            with open(path + 'Wordlists/CET-6.csv','r',encoding='utf8') as fin:
                 cin=csv.reader(fin)
                 self.wordlist=[row for row in cin]
         if i is 3:
-            with open('CEM-8.csv','r',encoding='utf8') as fin:
+            with open(path + 'Wordlists/CET-4.csv','r',encoding='utf8') as fin:
                 cin=csv.reader(fin)
                 self.wordlist=[row for row in cin]
         self.num=len(self.wordlist)-1
