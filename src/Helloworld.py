@@ -5,6 +5,7 @@ from menu import Menu
 from mainmenu import Mainmenu
 from gluttonous import HelloWorld
 from cocos.director import director
+from cocos.sprite import Sprite
 import pyglet
 
 class Hello(cocos.layer.Layer):
