@@ -22,12 +22,12 @@ class Hello(cocos.layer.Layer):
         # 0 初始态 已经有Main 需要建立新的游戏
         # 1 过渡态 不可响应任何操作
         # 2 终结态 重新响应操作
-        # sb徐艺红
 
     def on_mouse_press(self, x, y, buttons, modifiers):
         if self.i is 0:
             self.i=1
-            self.main.visible=False
+            self.main.visible = False
+            self.main.is_event_handler = False
             if y>250:
                 self.hel = HelloWorld()
                 self.add(self.hel)
