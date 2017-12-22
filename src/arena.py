@@ -29,6 +29,19 @@ class Arena(cocos.layer.ColorLayer):
             self.batch.add(Dot())
 
         self.schedule(self.update)
+        self.paused = False
+
+    def on_mouse_press(self, x, y, buttons, modifiers):
+        if buttons == 4:
+            self.pause_scheduler()
+            self.snake.pause_scheduler()
+            for snake in self.enemies:
+                snake.pause_scheduler()
+        elif buttons == 1:
+            self.resume_scheduler()
+            self.snake.resume_scheduler()
+            for snake in self.enemies:
+                snake.resume_scheduler()
 
     def add_enemy(self):
         enemy = Snake(True)

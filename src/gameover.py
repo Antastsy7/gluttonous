@@ -2,6 +2,7 @@
 import cocos
 from cocos.director import director
 import define
+from cocos.sprite import Sprite
 
 class Gameover(cocos.layer.ColorLayer):
     def __init__(self):
@@ -16,12 +17,15 @@ class Gameover(cocos.layer.ColorLayer):
         self.score.position = 250, 200
         self.add(self.score)
 
+        # self.add(Sprite(image='Score：.png', position=(560, 220)))
+
         text = cocos.text.Label('SCORE: ',
                                 font_name='SimHei',
                                 font_size=24,
                                 color=define.MAROON)
         text.position = 50, 200
         self.add(text)
+
         text = cocos.text.Label('CLICK TO REPLAY...',
                                 font_name='SimHei',
                                 font_size=24,

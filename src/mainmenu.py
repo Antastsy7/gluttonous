@@ -28,15 +28,20 @@ class Mainmenu(cocos.layer.Layer):
         self.add(self.rm)
         self.x0 = x0
         self.y0 = y0
+        self.chosen = 'none'
 
 
     def on_mouse_motion(self, x, y, buttons, modifiers):
         if x in range(160, 480) and y in range(300, 400):
             self.gm.image = pyglet.resource.image('Game Mode2.png')
+            self.chosen = 'game'
         else:
             self.gm.image = pyglet.resource.image('Game Mode1.png')
+            self.chosen = 'none'
             if x in range(160, 480) and y in range(170, 270):
                 self.rm.image = pyglet.resource.image('Learning Mode 2.png')
+                self.chosen = 'learn'
             else:
                 self.rm.image = pyglet.resource.image('Learning Mode 1.png')
+                self.chosen = 'none'
 
