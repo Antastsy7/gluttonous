@@ -12,7 +12,7 @@ class HelloWorld2(cocos.layer.Layer):
 
     is_event_handler = True
 
-    def __init__(self,i):
+    def __init__(self,listselect, modeselect):
         super(HelloWorld2, self).__init__()
         # 新建一个游戏
         self.arena = Arena2()
@@ -27,18 +27,10 @@ class HelloWorld2(cocos.layer.Layer):
         self.add(self.score,99999)
         # 打开数据库文件
         path = os.getcwd()[0:-4]
-        if i is 1:
-            with open(path + '/Wordlists/CEM-8.csv','r',encoding='utf8') as fin:
-                cin=csv.reader(fin)
-                self.wordlist=[row for row in cin]
-        if i is 2:
-            with open(path + '/Wordlists/CET-6.csv','r',encoding='utf8') as fin:
-                cin=csv.reader(fin)
-                self.wordlist=[row for row in cin]
-        if i is 3:
-            with open(path + '/Wordlists/CET-4.csv','r',encoding='utf8') as fin:
-                cin=csv.reader(fin)
-                self.wordlist=[row for row in cin]
+
+        with open(path + '/Wordlists/'+listselect+'.csv', 'r', encoding='utf8') as fin:
+            cin=csv.reader(fin)
+            self.wordlist=[row for row in cin]
         self.num=len(self.wordlist)-1
         # i是当前读取的单词序号 legnth是当前单词的长度 order表示当前要吃的字母在单词中的序号
         # j表示已经背的单词数
@@ -52,7 +44,10 @@ class HelloWorld2(cocos.layer.Layer):
                 self.arena.batch.add(Dot2(None,None,s))
         self.order=0
         # chance表示剩余的机会 如果<0则结束
-        self.chance=define.CHANCE
+        if modeselect == 'easy':
+            self.chance = 50
+        else:
+            self.chance = 20
         # 新建显示chance的层
         self.life = cocos.text.Label(str(self.chance),
                                       font_name='SimHei',
@@ -88,7 +83,7 @@ class HelloWorld2(cocos.layer.Layer):
         self.gameover.score.element.text = str(self.j)
 
     def on_mouse_press(self, x, y, buttons, modifiers):
-        if self.gameover.visible:
+        if buttons == 1 and self.gameover.visible:
             self.gameover.visible = False
             par = self.parent.parent
             par.remove(par.hel)

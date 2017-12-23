@@ -55,3 +55,17 @@ class Arena2(cocos.layer.ColorLayer):
             self.snake.angle_dest = self.snake.angle
         else:
             self.snake.angle_dest = direct
+
+    def on_mouse_press(self, x, y, buttons, modifiers):
+        if buttons == 4:
+            self.pause_scheduler()
+            self.snake.pause_scheduler()
+            for snake in self.enemies:
+                snake.pause_scheduler()
+
+
+        elif buttons == 1:
+            self.resume_scheduler()
+            self.snake.resume_scheduler()
+            for snake in self.enemies:
+                snake.resume_scheduler()

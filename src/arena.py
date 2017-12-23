@@ -37,6 +37,8 @@ class Arena(cocos.layer.ColorLayer):
             self.snake.pause_scheduler()
             for snake in self.enemies:
                 snake.pause_scheduler()
+
+
         elif buttons == 1:
             self.resume_scheduler()
             self.snake.resume_scheduler()

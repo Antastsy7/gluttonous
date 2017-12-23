@@ -83,13 +83,7 @@ class Menu(cocos.layer.ColorLayer):
         if y>250 and y<350:
             self.i=3
         if not self.i==0:
-            self.hel = HelloWorld2(self.i)
-            self.add(self.hel)
-            self.remove(self.text1)
-            self.remove(self.text4)
-            self.remove(self.text3)
-            self.remove(self.text2)
-            self.color=(0,0,0)'''
+            '''
 
     def reset_list(self):
         self.text2.image = pyglet.resource.image('CEM8 1.png')
@@ -101,26 +95,35 @@ class Menu(cocos.layer.ColorLayer):
         self.text6.image = pyglet.resource.image('Hard 1.png')
 
     def on_mouse_press(self, x, y, buttons, modifiers):
+        if self.is_event_handler:
+            if buttons == 4:
+                if self.modeselect is not None and self.listselect is not None:
+                    hel = HelloWorld2(self.listselect, self.modeselect)
+                    self.is_event_handler = False
+                    self.parent.add(hel)
 
-         if x in range(160, 280):
-             self.reset_list()
-             if y in range(300, 330):
-                 self.listselect = 'CEM8'
-                 self.text2.image = pyglet.resource.image('CEM8 2.png')
-             elif y in range(200, 230):
-                 self.listselect = 'CET4'
-                 self.text3.image = pyglet.resource.image('CET4 2.png')
-             elif y in range(100, 130):
-                 self.listselect = 'CET6'
-                 self.text4.image = pyglet.resource.image('CET6 2.png')
-         elif x in range(420, 500):
-             self.reset_mode()
-             if y in range(250, 280):
-                 self.modeselect = 'easy'
-                 self.text5.image = pyglet.resource.image('Easy 2.png')
-             elif y in range(150, 180):
-                 self.modeselect = 'hard'
-                 self.text6.image = pyglet.resource.image('Hard 2.png')
-         else:
-             return
-        
+                else:
+                    return
+            else:
+                if x in range(160, 280):
+                    self.reset_list()
+                    if y in range(300, 330):
+                        self.listselect = 'CEM-8'
+                        self.text2.image = pyglet.resource.image('CEM8 2.png')
+                    elif y in range(200, 230):
+                        self.listselect = 'CET-4'
+                        self.text3.image = pyglet.resource.image('CET4 2.png')
+                    elif y in range(100, 130):
+                        self.listselect = 'CET-6'
+                        self.text4.image = pyglet.resource.image('CET6 2.png')
+                elif x in range(420, 500):
+                    self.reset_mode()
+                    if y in range(250, 280):
+                        self.modeselect = 'easy'
+                        self.text5.image = pyglet.resource.image('Easy 2.png')
+                    elif y in range(150, 180):
+                        self.modeselect = 'hard'
+                        self.text6.image = pyglet.resource.image('Hard 2.png')
+                else:
+                    return
+
