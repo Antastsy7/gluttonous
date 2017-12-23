@@ -98,9 +98,10 @@ class Menu(cocos.layer.ColorLayer):
         if self.is_event_handler:
             if buttons == 4:
                 if self.modeselect is not None and self.listselect is not None:
-                    hel = HelloWorld2(self.listselect, self.modeselect)
+                    self.hel = HelloWorld2(self.listselect, self.modeselect)
                     self.is_event_handler = False
-                    self.parent.add(hel)
+                    self.visible = False
+                    self.parent.add(self.hel)
 
                 else:
                     return

@@ -31,9 +31,9 @@ class HelloWorld(cocos.layer.Layer):
     def on_mouse_press(self, x, y, buttons, modifiers):
         if self.gameover.visible:                           # 如果当前gameover面板可见 则结束游戏 通过parent删除当前游戏回到主菜单
             self.gameover.visible = False
-            par=self.parent
-            par.remove(par.hel)
-            par.i=2
+            self.remove(self.arena)
+            self.parent.i=2
+            del self
 
 
 

@@ -80,14 +80,16 @@ class HelloWorld2(cocos.layer.Layer):
 
     def end_game(self):
         self.gameover.visible = True
+        self.arena.is_event_handler = False
         self.gameover.score.element.text = str(self.j)
 
     def on_mouse_press(self, x, y, buttons, modifiers):
         if buttons == 1 and self.gameover.visible:
             self.gameover.visible = False
-            par = self.parent.parent
-            par.remove(par.hel)
-            par.i = 2
+            self.remove(self.arena)
+            self.parent.i = 2
+            self.parent.remove(self)
+            del self
 
 
 
