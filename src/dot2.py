@@ -89,7 +89,7 @@ class Dot2(Sprite):
                         are.j+=1
                         are.order=0
                         are.word=are.wordlist[are.i][0]
-                        ss=unicode(are.wordlist[are.i][1],'utf-8')
+                        ss=are.wordlist[are.i][1]
                         are.chinese.element.text=ss
                         are.length=len(are.word)
                         are.score.element.text=''
@@ -97,7 +97,7 @@ class Dot2(Sprite):
                             s=ord(c)-96
                             print(s)
                             arena = self.parent.parent
-                            arena.batch.add(Dot2(s))
+                            arena.batch.add(Dot2(num=s))
                 else:
                     if are.chance>0:
                         are.chance-=1

@@ -15,7 +15,7 @@ class Hello(cocos.layer.Layer):
         pyglet.resource.path = ['../img']
         pyglet.resource.reindex()
         super(Hello, self).__init__()
-        self.back = back()
+        self.back = cocos.layer.ColorLayer(255,255,255,255)
         self.add(self.back)
         self.main = Mainmenu()
         self.add(self.main)

@@ -32,6 +32,7 @@ class HelloWorld(cocos.layer.Layer):
         if self.gameover.visible:                           # 如果当前gameover面板可见 则结束游戏 通过parent删除当前游戏回到主菜单
             self.gameover.visible = False
             self.remove(self.arena)
+            self.remove(self.score)
             self.parent.i=2
             del self
 
